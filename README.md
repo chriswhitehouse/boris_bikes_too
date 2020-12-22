@@ -133,6 +133,48 @@ I want to be able to specify a larger capacity when necessary.
 DockingStation <-- new(capacity) --> DockingStation
 ```
 
+### User Story 9
+```
+As a member of the public,
+So that I reduce the chance of getting a broken bike in future,
+I'd like to report a bike as broken when I return it.
+```
+|Objects | Messages |
+|---|---|
+|Person |   |
+|Bike | bike.report_broken |
+```
+Bike <-- report_broken --> Bike
+```
+
+### User Story 10
+```
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like docking stations not to release broken bikes.
+```
+|Objects | Messages |
+|---|---|
+|Person |   |
+|DockingStation | release_bike  |
+```
+DockingStation <-- release_bike --> 'No bike available'
+```
+
+### User Story 11
+```
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like docking stations to accept returning bikes (broken or not).
+```
+|Objects | Messages |
+|---|---|
+|Person |   |
+|DockingStation| dock  |
+```
+DockingStation <-- bike.report_broken --> Bike
+```
+
 ## Code Example
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 

@@ -16,7 +16,7 @@ describe "User Stories" do
   describe "2. So that I can use a good bike," do
     it "I'd like to see if a bike is working" do
       docking_station.dock(bike)
-      expect(docking_station.release_bike).to be_working
+      expect(docking_station.release_bike).not_to be_broken
     end
   end
 
@@ -55,6 +55,28 @@ describe "User Stories" do
   describe "8. So that busy areas can be served more effectively," do
     it "I want to be able to specify a larger capacity when necessary." do
       expect(docking_station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
+  end
+
+  describe "9. So that I reduce the chance of getting a broken bike in future," do
+    it "I'd like to report a bike as broken when I return it." do
+      bike.report_broken
+      expect(bike).to be_broken
+    end
+  end
+
+  describe "10. So that I can manage broken bikes and not disappoint users," do
+      it "I'd like docking stations not to release broken bikes." do
+        bike.report_broken
+        docking_station.dock(bike)
+        expect { docking_station.release_bike }.to raise_error "No bike available"
+      end
+  end
+
+  describe "11. So that I can manage broken bikes and not disappoint users," do
+    it "I'd like docking stations to accept returning bikes (broken or not)." do
+      bike.report_broken
+      expect(docking_station.dock(bike)).to include bike
     end
   end
 end
