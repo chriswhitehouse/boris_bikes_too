@@ -3,7 +3,7 @@ language:
 
 rvm:
     - 2.7
-    - jruby
+#    - jruby
 
 script:
   - bundle exec rspec
