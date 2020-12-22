@@ -1,8 +1,7 @@
-require 'docking_station'
-require 'bike'
+require "docking_station"
+require "bike"
 
-
-describe 'User Stories' do
+describe "User Stories" do
   let(:docking_station) { DockingStation.new }
   let(:bike) { Bike.new }
 
@@ -22,27 +21,34 @@ describe 'User Stories' do
 
   describe "3. So I can return bikes I've hired" do
     it "I want to dock my bike at the docking station" do
-      expect(docking_station.dock(bike)).to eq bike
+      expect(docking_station.dock(bike)).to include bike
     end
   end
 
   describe "4. So I can decide whether to use the docking station" do
     it "I want to see a bike that has been docked" do
       docking_station.dock(bike)
-      expect(docking_station.bike).to eq bike
+      expect(docking_station.bikes).to include bike
     end
   end
 
   describe "5. So that I am not confused and charged unnecessarily," do
-     it "I'd like docking stations not to release bikes when there are none available." do
+    it "I'd like docking stations not to release bikes when none available." do
       expect { docking_station.release_bike }.to raise_error("No bike available")
     end
   end
 
   describe "6. So that I can control the distribution of bikes," do
-    it "I'd like docking stations not to accept more bikes than their capacity." do
-      docking_station.dock(bike)
+    it "I'd like docking stations not to accept more bikes than capacity." do
+      DockingStation::CAPACITY.times { docking_station.dock(bike) }
       expect { docking_station.dock(bike) }.to raise_error("Docking station full")
     end
   end
+
+  describe "7. So that I can plan the distribution of bikes," do
+    it "I want a docking station to have a default capacity of 20 bikes." do
+      expect(DockingStation::CAPACITY).to eq 20
+    end
+  end
+
 end

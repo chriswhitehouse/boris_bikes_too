@@ -105,6 +105,20 @@ I'd like docking stations not to accept more bikes than their capacity.
 DockingStation <-- dock --> "Docking station full"
 ```
 
+### User Story 7
+```
+As a system maintainer,
+So that I can plan the distribution of bikes,
+I want a docking station to have a default capacity of 20 bikes.
+```
+|Objects | Messages |
+|---|---|
+|Person |   |
+|DockingStation | capacity  |
+```
+DockingStation <-- capacity --> 20
+```
+
 ## Code Example
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
