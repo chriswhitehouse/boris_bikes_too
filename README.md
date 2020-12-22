@@ -47,6 +47,35 @@ I'd like to see if a bike is working
 Bike <-- working? --> true/false
 ```
 
+### User Story 3
+```
+As a member of the public
+So I can return bikes I've hired
+I want to dock my bike at the docking station
+```
+#### Domain Model
+|Objects | Messages |
+|---|---|
+|Person |   |
+|DockingStation | dock  |
+```
+DockingStation <-- dock_bike <-- Bike
+```
+
+### User Story 4
+```
+As a member of the public
+So I can decide whether to use the docking station
+I want to see a bike that has been docked
+```
+#### Domain Model
+|Objects | Messages |
+|---|---|
+|Person |   |
+|DockingStation | bike  |
+```
+DockingStation <-- see_bike --> Bike
+```
 ## Code Example
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
