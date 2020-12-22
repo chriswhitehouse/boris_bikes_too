@@ -7,6 +7,9 @@ This is a second go at the challenge. Trying to reinforce prior learning.
 ## Build status
 [![Build Status](https://travis-ci.com/chriswhitehouse/boris_bikes_too.svg?branch=main)](https://travis-ci.com/chriswhitehouse/boris_bikes_too)
 
+## Code Style
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
+
 ## Screenshots
 Include logo/demo screenshot etc.
 

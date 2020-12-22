@@ -1,7 +1,11 @@
 describe DockingStation do
-  describe '#release_bike' do
-    it 'should respond with a bike object' do
-      expect(subject).to respond_to(:release_bike)
+  it { is_expected.to respond_to :release_bike }
+
+  describe "#release_bike" do
+    it "releases working bikes" do
+      bike = subject.release_bike
+      expect(bike).to be_working
     end
+
   end
 end
