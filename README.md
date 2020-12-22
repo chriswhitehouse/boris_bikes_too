@@ -114,9 +114,23 @@ I want a docking station to have a default capacity of 20 bikes.
 |Objects | Messages |
 |---|---|
 |Person |   |
-|DockingStation | capacity  |
+|DockingStation | DEFAULT_CAPACITY  |
 ```
-DockingStation <-- capacity --> 20
+DockingStation <-- DEAFAULT_CAPACITY --> 20
+```
+
+### User Story 8
+```
+As a system maintainer,
+So that busy areas can be served more effectively,
+I want to be able to specify a larger capacity when necessary.
+```
+|Objects | Messages |
+|---|---|
+|Person |   |
+|DockingStation | new(capacity)  |
+```
+DockingStation <-- new(capacity) --> DockingStation
 ```
 
 ## Code Example
