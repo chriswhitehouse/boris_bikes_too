@@ -5,37 +5,53 @@ A small ruby replication of the 'Boris Bike' system.
 This is a second go at the challenge. Trying to reinforce prior learning.
 
 ## Build status
-Build status of continuous integration i.e. travis, appveyor etc. Ex. -
-
-[![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
-
-## Code style
-If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
-
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+[![Build Status](https://travis-ci.com/chriswhitehouse/boris_bikes_too.svg?branch=main)](https://travis-ci.com/chriswhitehouse/boris_bikes_too)
 
 ## Screenshots
 Include logo/demo screenshot etc.
 
 ## Tech/framework used
-Ex. -
-
-<b>Built with</b>
-- [Electron](https://electron.atom.io)
+Ruby with Rspec for testing.
 
 ## Features
-What makes your project stand out?
+### User Story 1
+```
+As a person,
+So that I can use a bike,
+I'd like a docking station to release a bike.
+```
+#### Domain Model
+|Objects | Messages |
+|---|---|
+|Person |   |
+|Bike |  |
+|DockingStation | release_bike |
+```
+DockingStation <-- release_bike --> a Bike
+```
+### User Story 2
+```
+As a person,
+So that I can use a good bike,
+I'd like to see if a bike is working
+```
+#### Domain Model
+|Objects | Messages |
+|---|---|
+|Person |   |
+|Bike | working?  |
+```
+Bike <-- working? --> true/false
+```
 
 ## Code Example
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
 ## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
-
-## API Reference
-
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+1. Create project folder `$ mkdir boris_bikes_too`
+2. Clone or Fork Repository into project folder
+3. Bundle gems with `$ bundle`
+4. Check all tests are passing with `$ rspec`
 
 ## Tests
 Describe and show how to run the tests with code examples.
