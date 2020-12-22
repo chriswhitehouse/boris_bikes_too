@@ -86,9 +86,23 @@ I'd like docking stations not to release bikes when there are none available.
 |Objects | Messages |
 |---|---|
 |Person |   |
-|DockingStation | available?  |
+|DockingStation | release_bike  |
 ```
-DockingStation <-- available --> true/false
+DockingStation <-- release_bike --> "No bike available"
+```
+
+### User Story 6
+```
+As a maintainer of the system,
+So that I can control the distribution of bikes,
+I'd like docking stations not to accept more bikes than their capacity.
+```
+|Objects | Messages |
+|---|---|
+|Person |   |
+|DockingStation | dock  |
+```
+DockingStation <-- dock --> "Docking station full"
 ```
 
 ## Code Example
