@@ -1,26 +1,35 @@
-class Van
-  attr_reader :broken_bikes
+require 'bike_container'
 
-  def initialize
-    @broken_bikes = []
-    @working_bikes = []
-  end
+class Van
+  include BikeContainer
 
   def take_broken(bike)
     fail "Will not take working bike" unless bike.broken?
-
-    @broken_bikes << bike
+    add bike
   end
 
   def deliver_broken_bike
-    @broken_bikes.pop
+    fail "No bike available" if broken_bikes.empty?
+    bikes.delete broken_bikes.pop
   end
 
   def collect_working(bike)
-    @working_bikes << bike
+    fail "Will not take broken bike" if bike.broken?
+    add bike
   end
 
   def distribute_working_bike
-    @working_bikes.pop
+    fail "No bike available" if working_bikes.empty?
+    bikes.delete working_bikes.pop
+  end
+
+  private
+
+  def working_bikes
+    bikes.reject { |bike| bike.broken? }
+  end
+
+  def broken_bikes
+    bikes.reject { |bike| !bike.broken? }
   end
 end

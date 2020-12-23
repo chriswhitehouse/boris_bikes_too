@@ -1,15 +1,18 @@
+require 'bike_container'
+
 class Garage
-  def initialize
-    @bikes = []
-  end
+  include BikeContainer
 
   def accept_broken(bike)
     fail "Will not accept working bikes" unless bike.broken?
-    bike.fix
-    @bikes << bike
+    add bike
   end
 
   def return_working_bike
-    @bikes.pop
+    remove_bike
+  end
+
+  def fix_bikes
+    bikes.map { |bike| bike.fix }
   end
 end

@@ -19,6 +19,7 @@ require "docking_station"
 require "bike"
 require "van"
 require "garage"
+require "bike_container"
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [SimpleCov::Formatter::Console,

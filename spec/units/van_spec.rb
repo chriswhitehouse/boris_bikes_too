@@ -10,7 +10,7 @@ describe Van do
     it "should accept a broken bike" do
       allow(bike_double).to receive(:broken?).and_return(true)
       subject.take_broken(bike_double)
-      expect(subject.broken_bikes).to include bike_double
+      expect(subject.take_broken(bike_double)).to include bike_double
     end
   end
 
@@ -28,6 +28,7 @@ describe Van do
     end
 
     it "should store a working bike in a collection" do
+      allow(bike_double).to receive(:broken?).and_return(false)
       expect(subject.collect_working(bike_double)).to include bike_double
     end
   end
@@ -38,6 +39,7 @@ describe Van do
     end
 
     it "should return a bike" do
+      allow(bike_double).to receive(:broken?).and_return(false)
       subject.collect_working(bike_double)
       expect(subject.distribute_working_bike).to eq bike_double
     end

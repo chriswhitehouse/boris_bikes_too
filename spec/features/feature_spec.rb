@@ -43,7 +43,7 @@ describe "User Story:" do
   describe "6. So that I can control the distribution of bikes," do
     it "I'd like docking stations not to accept more bikes than capacity." do
       DockingStation::DEFAULT_CAPACITY.times { docking_station.dock(bike) }
-      expect { docking_station.dock(bike) }.to raise_error("Docking station full")
+      expect { docking_station.dock(bike) }.to raise_error("DockingStation full")
     end
   end
 
@@ -84,14 +84,14 @@ describe "User Story:" do
   describe "12. So that I can manage broken bikes and not disappoint users," do
     before :each do
       bike.report_broken
-      van.take_broken(bike)
     end
 
     it "I'd like vans to take broken bikes from docking stations," do
-      expect(van.broken_bikes).to include bike
+      expect(van.take_broken(bike)).to include bike
     end
 
     it "and deliver them to garages to be fixed." do
+      van.take_broken(bike)
       expect(garage.accept_broken(van.deliver_broken_bike)).to include bike
     end
   end
@@ -100,12 +100,14 @@ describe "User Story:" do
     it "I'd like garages to provide working bikes" do
       bike.report_broken
       garage.accept_broken(bike)
+      garage.fix_bikes
       expect(garage.return_working_bike.broken?).to eq false
     end
 
     it "I'd like vans to collect working bikes from garages" do
       bike.report_broken
       garage.accept_broken(bike)
+      garage.fix_bikes
       expect(van.collect_working( garage.return_working_bike )).to include bike
     end
 

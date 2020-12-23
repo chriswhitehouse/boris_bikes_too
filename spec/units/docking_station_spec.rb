@@ -1,3 +1,5 @@
+require 'support/shared_examples_for_bike_container'
+
 describe DockingStation do
   let(:bike) { double :bike, report_broken: true, broken?: false }
 
@@ -9,7 +11,7 @@ describe DockingStation do
     it "has a variable capacity" do
       docking_station = DockingStation.new(50)
       50.times { docking_station.dock(bike) }
-      expect { docking_station.dock(bike) }.to raise_error "Docking station full"
+      expect { docking_station.dock(bike) }.to raise_error "DockingStation full"
     end
   end
 
@@ -38,15 +40,9 @@ describe DockingStation do
 
     it "raises an error when docking station is full" do
       subject.capacity.times { subject.dock(bike) }
-      expect { subject.dock(bike) }.to raise_error "Docking station full"
+      expect { subject.dock(bike) }.to raise_error "DockingStation full"
     end
   end
 
-  # describe "#bike" do
-  #   it "returns docked bikes" do
-  #     bike = Bike.new
-  #     subject.dock(bike)
-  #     expect(subject.bikes).to include bike
-  #   end
-  # end
+  it_behaves_like BikeContainer
 end
