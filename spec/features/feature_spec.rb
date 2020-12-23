@@ -4,7 +4,8 @@ require "bike"
 describe "User Stories" do
   let(:docking_station) { DockingStation.new }
   let(:bike) { Bike.new }
-  let(:capacity) { 25 }
+  let(:van) { Van.new }
+  let(:garage) { Garage.new }
 
   describe "1. So that I can use a bike," do
     it "I'd like a docking station to release a bike." do
@@ -83,20 +84,15 @@ describe "User Stories" do
   describe "12. So that I can manage broken bikes and not disappoint users," do
     before :each do
       bike.report_broken
-      docking_station.dock(bike)
-      van = Van.new
-      van.collect_broken_bikes(docking_station)
+      van.take_broken(bike)
     end
 
     it "I'd like vans to take broken bikes from docking stations," do
-      expect(van).to include bike
+      expect(van.broken_bikes).to include bike
     end
 
     it "and deliver them to garages to be fixed." do
-      garage = Garage.new
-      garage.fix_broken_bikes(van)
-      expect(garage).to include bike
-      expect(bike).not_to be_broken
+      expect(garage.accept_broken( van.deliver_broken_bike )).to include bike
     end
   end
 end
