@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/support/shared_examples_for_bike_container.rb'
+require File.dirname(__FILE__) + '/../support/shared_examples_for_bike_container.rb'
 
 class BikeContainerTest
   include BikeContainer

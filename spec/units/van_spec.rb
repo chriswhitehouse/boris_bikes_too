@@ -1,4 +1,8 @@
+require 'support/shared_examples_for_bike_container'
+
 describe Van do
+  it_behaves_like BikeContainer
+
   let(:bike_double) { double :bike }
 
   describe "#take_broken" do
@@ -23,10 +27,6 @@ describe Van do
   end
 
   describe "#collect_working" do
-    it "should respond" do
-      expect(subject).to respond_to(:collect_working)
-    end
-
     it "should store a working bike in a collection" do
       allow(bike_double).to receive(:broken?).and_return(false)
       expect(subject.collect_working(bike_double)).to include bike_double
@@ -34,10 +34,6 @@ describe Van do
   end
 
   describe "#distribute_working_bike" do
-    it "should respond" do
-      expect(subject).to respond_to(:distribute_working_bike)
-    end
-
     it "should return a bike" do
       allow(bike_double).to receive(:broken?).and_return(false)
       subject.collect_working(bike_double)

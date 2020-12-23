@@ -212,7 +212,41 @@ Van <-- distribute_working_bike --> Bike
 ```
 
 ## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+The following is the 'Bike Container' module that forms the basis of the DockingStation, Van, and Garage classes.
+```ruby
+module BikeContainer
+  DEFAULT_CAPACITY = 20
+
+  attr_reader :capacity
+
+  def initialize(capacity = DEFAULT_CAPACITY)
+    @capacity = capacity
+    @bikes = []
+  end
+
+  def add(bike)
+    raise "#{self.class.name} full" if full?
+    bikes << bike
+  end
+
+  def remove_bike
+    raise "#{self.class.name} empty" if empty?
+    bikes.pop
+  end
+
+  def empty?
+    bikes.empty?
+  end
+
+  def full?
+    bikes.count >= capacity
+  end
+
+  private
+
+  attr_reader :bikes
+end
+```
 
 ## Installation
 1. Create project folder `$ mkdir boris_bikes_too`
@@ -221,21 +255,48 @@ Show what the library does as concisely as possible, developers should be able t
 4. Check all tests are passing with `$ rspec`
 
 ## Tests
-Describe and show how to run the tests with code examples.
+Run `$ rspec` to run all checks.
+
+60 examples, 0 failures. 100% coverage.
+
+Feature Test Coverage:
+
+User Story:
+  1. So that I can use a bike,
+
+    I'd like a docking station to release a bike.
+  2. So that I can use a good bike,
+    I'd like to see if a bike is working
+  3. So I can return bikes I've hired
+    I want to dock my bike at the docking station
+  5. So that I am not confused and charged unnecessarily,
+    I'd like docking stations not to release bikes when none available.
+  6. So that I can control the distribution of bikes,
+    I'd like docking stations not to accept more bikes than capacity.
+  7. So that I can plan the distribution of bikes,
+    I want a docking station to have a default capacity of 20 bikes.
+  8. So that busy areas can be served more effectively,
+    I want to be able to specify a larger capacity when necessary.
+  9. So that I reduce the chance of getting a broken bike in future,
+    I'd like to report a bike as broken when I return it.
+  10. So that I can manage broken bikes and not disappoint users,
+    I'd like docking stations not to release broken bikes.
+  11. So that I can manage broken bikes and not disappoint users,
+    I'd like docking stations to accept returning bikes (broken or not).
+  12. So that I can manage broken bikes and not disappoint users,
+    I'd like vans to take broken bikes from docking stations,
+    and deliver them to garages to be fixed.
+  13. So that I can manage broken bikes and not disappoint users,
+    I'd like garages to provide working bikes
+    I'd like vans to collect working bikes from garages
+    I'd like vans to distribute working bikes to docking stations.
+
 
 ## How to use?
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+Use IRB. Require each of:
 
-## Contribute
-
-Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus.
-
-## Credits
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project.
-
-#### Anything else that seems useful
-
-## License
-A short snippet describing the license (MIT, Apache etc)
-
-MIT © [Yourname]()
+* bike_container.rb
+* bike.rb
+* docking_station.rb
+* garage.rb
+* van.rb
