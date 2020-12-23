@@ -1,5 +1,5 @@
 describe DockingStation do
-  let(:bike) {double :bike, report_broken: true, broken?: false }
+  let(:bike) { double :bike, report_broken: true, broken?: false }
 
   describe "#new" do
     it "has a deafult capacity" do

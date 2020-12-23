@@ -175,6 +175,40 @@ I'd like docking stations to accept returning bikes (broken or not).
 DockingStation <-- bike.report_broken --> Bike
 ```
 
+### User Story 12
+```
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
+```
+|Objects | Messages |
+|---|---|
+|Van| deliver_broken_bikes  |
+|Garage|  |
+|Bike|  |
+|DockingStation| collect_broken_bikes |
+```
+DockingStation <-- collect_broken_bikes --> Van
+Van <-- deliver_broken_bikes --> Garage
+```
+
+### User Story 13
+```
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like vans to collect working bikes from garages and distribute them to docking stations.
+```
+|Objects | Messages |
+|---|---|
+|Van| deliver_working_bikes  |
+|Garage| collect_working_bikes  |
+|Bike|  |
+|DockingStation|   |
+```
+Garage <-- collect_working_bikes --> Van
+Van <-- deliver_working_bikes --> DockingStation
+```
+
 ## Code Example
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
