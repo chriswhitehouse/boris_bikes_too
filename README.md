@@ -265,30 +265,30 @@ User Story:
   2. So that I can use a good bike,
       I'd like to see if a bike is working
       :white_check_mark:
-      
+
   3. So I can return bikes I've hired
-    I want to dock my bike at the docking station
+    I want to dock my bike at the docking station. :white_check_mark:
   5. So that I am not confused and charged unnecessarily,
-    I'd like docking stations not to release bikes when none available.
+    I'd like docking stations not to release bikes when none available. :white_check_mark:
   6. So that I can control the distribution of bikes,
-    I'd like docking stations not to accept more bikes than capacity.
+    I'd like docking stations not to accept more bikes than capacity. :white_check_mark:
   7. So that I can plan the distribution of bikes,
-    I want a docking station to have a default capacity of 20 bikes.
+    I want a docking station to have a default capacity of 20 bikes. :white_check_mark:
   8. So that busy areas can be served more effectively,
-    I want to be able to specify a larger capacity when necessary.
+    I want to be able to specify a larger capacity when necessary. :white_check_mark:
   9. So that I reduce the chance of getting a broken bike in future,
-    I'd like to report a bike as broken when I return it.
+    I'd like to report a bike as broken when I return it. :white_check_mark:
   10. So that I can manage broken bikes and not disappoint users,
-    I'd like docking stations not to release broken bikes.
+    I'd like docking stations not to release broken bikes. :white_check_mark:
   11. So that I can manage broken bikes and not disappoint users,
-    I'd like docking stations to accept returning bikes (broken or not).
+    I'd like docking stations to accept returning bikes (broken or not). :white_check_mark:
   12. So that I can manage broken bikes and not disappoint users,
     I'd like vans to take broken bikes from docking stations,
-    and deliver them to garages to be fixed.
+    and deliver them to garages to be fixed. :white_check_mark:
   13. So that I can manage broken bikes and not disappoint users,
-    I'd like garages to provide working bikes
-    I'd like vans to collect working bikes from garages
-    I'd like vans to distribute working bikes to docking stations.
+    I'd like garages to provide working bikes :white_check_mark:
+    I'd like vans to collect working bikes from garages :white_check_mark:
+    I'd like vans to distribute working bikes to docking stations. :white_check_mark:
 
 
 ## How to use?
