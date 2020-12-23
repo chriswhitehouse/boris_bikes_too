@@ -79,4 +79,24 @@ describe "User Stories" do
       expect(docking_station.dock(bike)).to include bike
     end
   end
+
+  describe "12. So that I can manage broken bikes and not disappoint users," do
+    before :each do
+      bike.report_broken
+      docking_station.dock(bike)
+      van = Van.new
+      van.collect_broken_bikes(docking_station)
+    end
+
+    it "I'd like vans to take broken bikes from docking stations," do
+      expect(van).to include bike
+    end
+
+    it "and deliver them to garages to be fixed." do
+      garage = Garage.new
+      garage.fix_broken_bikes(van)
+      expect(garage).to include bike
+      expect(bike).not_to be_broken
+    end
+  end
 end
