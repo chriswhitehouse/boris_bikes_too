@@ -10,9 +10,6 @@ This is a second go at the challenge. Trying to reinforce prior learning.
 ## Code Style
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
-## Screenshots
-Include logo/demo screenshot etc.
-
 ## Tech/framework used
 Ruby with Rspec for testing.
 
@@ -263,10 +260,12 @@ Feature Test Coverage:
 
 User Story:
   1. So that I can use a bike,
+      I'd like a docking station to release a bike. :white_check_mark:
 
-    I'd like a docking station to release a bike.
   2. So that I can use a good bike,
-    I'd like to see if a bike is working
+      I'd like to see if a bike is working
+      :white_check_mark:
+      
   3. So I can return bikes I've hired
     I want to dock my bike at the docking station
   5. So that I am not confused and charged unnecessarily,
