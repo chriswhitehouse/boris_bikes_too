@@ -1,7 +1,7 @@
 require "docking_station"
 require "bike"
 
-describe "User Stories" do
+describe "User Story:" do
   let(:docking_station) { DockingStation.new }
   let(:bike) { Bike.new }
   let(:van) { Van.new }
@@ -67,11 +67,11 @@ describe "User Stories" do
   end
 
   describe "10. So that I can manage broken bikes and not disappoint users," do
-      it "I'd like docking stations not to release broken bikes." do
-        bike.report_broken
-        docking_station.dock(bike)
-        expect { docking_station.release_bike }.to raise_error "No bike available"
-      end
+    it "I'd like docking stations not to release broken bikes." do
+      bike.report_broken
+      docking_station.dock(bike)
+      expect { docking_station.release_bike }.to raise_error "No bike available"
+    end
   end
 
   describe "11. So that I can manage broken bikes and not disappoint users," do
@@ -92,7 +92,26 @@ describe "User Stories" do
     end
 
     it "and deliver them to garages to be fixed." do
-      expect(garage.accept_broken( van.deliver_broken_bike )).to include bike
+      expect(garage.accept_broken(van.deliver_broken_bike)).to include bike
+    end
+  end
+
+  describe "13. So that I can manage broken bikes and not disappoint users," do
+    it "I'd like garages to provide working bikes" do
+      bike.report_broken
+      garage.accept_broken(bike)
+      expect(garage.return_working_bike.broken?).to eq false
+    end
+
+    it "I'd like vans to collect working bikes from garages" do
+      bike.report_broken
+      garage.accept_broken(bike)
+      expect(van.collect_working( garage.return_working_bike )).to include bike
+    end
+
+    it "I'd like vans to distribute working bikes to docking stations." do
+      van.collect_working(bike)
+      expect(van.distribute_working_bike).to eq bike
     end
   end
 end

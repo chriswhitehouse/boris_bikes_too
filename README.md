@@ -183,8 +183,8 @@ I'd like vans to take broken bikes from docking stations and deliver them to gar
 ```
 |Objects | Messages |
 |---|---|
-|Van| take, deliver  |
-|Garage| accept  |
+|Van| take_broken, deliver_broken_bike  |
+|Garage| accept_broken  |
 |Bike|  |
 |DockingStation|  |
 ```
@@ -201,14 +201,14 @@ I'd like vans to collect working bikes from garages and distribute them to docki
 ```
 |Objects | Messages |
 |---|---|
-|Van|   |
-|Garage| return_fixed_bike  |
+|Van| collect_working, distribute_working_bike  |
+|Garage| return_working_bike  |
 |Bike|  |
 |DockingStation|   |
 ```
-Garage <-- return_fixed_bike --> Bike.broken? = false
-Van <-- take(bike.broken? = false)
-Van <-- distribute_fixed_bike --> Bike.broken = false
+Garage <-- return_working_bike --> Bike
+Van <-- collect_working(Bike)
+Van <-- distribute_working_bike --> Bike
 ```
 
 ## Code Example
